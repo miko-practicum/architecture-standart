@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net" modified="2026-09-12T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="c4-container-deposit-mvp" name="C4 Container Deposit MVP">
+    <mxGraphModel dx="2900" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2900" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="C4 Container: MVP открытия депозитов онлайн" style="text;html=1;strokeColor=none;fillColor=none;fontSize=28;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="850" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Диаграмма детализирует интернет-банк, новый контур депозитных заявок и АБС. Остальные системы показаны как внешние контейнеры интеграции." style="text;html=1;strokeColor=none;fillColor=none;fontSize=15;align=left;whiteSpace=wrap" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="client" value="Клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="operator" value="Оператор кол-центра" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="2260" y="210" width="90" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="backoffice" value="Бэк-офис" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="2450" y="940" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="site" value="Сайт банка&lt;br&gt;PHP + React.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="170" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-boundary" value="Интернет-банк, ASP.NET MVC 4.5 + MS SQL" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="250" y="310" width="560" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-ui" value="Deposit UI Module&lt;br&gt;экраны депозитов, выбор счёта и суммы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="ib-boundary">
+          <mxGeometry x="50" y="70" width="460" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-monolith" value="Internet Bank Monolith&lt;br&gt;существующее ядро: платежи, счета, сессия клиента" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="ib-boundary">
+          <mxGeometry x="50" y="180" width="460" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-adapter" value="Deposit API Adapter&lt;br&gt;HTTPS-клиент к депозитному контуру" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="ib-boundary">
+          <mxGeometry x="50" y="310" width="460" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ib-db" value="Internet Bank DB&lt;br&gt;MS SQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="ib-boundary">
+          <mxGeometry x="140" y="450" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="deposit-boundary" value="Контур депозитных заявок MVP, новый микросервисный контур" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="940" y="170" width="760" height="780" as="geometry" />
+        </mxCell>
+        <mxCell id="deposit-api" value="Deposit Application Service&lt;br&gt;Java Spring Boot или .NET&lt;br&gt;приём заявок, статусы, аудит" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13;fontStyle=1" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="60" y="80" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rates-api" value="Rates API / Rate Cache&lt;br&gt;быстрое чтение ставок и персональных условий" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="430" y="80" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="otp" value="OTP / Notification Service&lt;br&gt;SMS-коды и уведомления" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="60" y="240" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="worker" value="Integration Worker&lt;br&gt;outbox или Kafka, повторы, идемпотентность" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="430" y="240" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="deposit-db" value="Deposit Applications DB&lt;br&gt;MS SQL&lt;br&gt;заявки, статусы, outbox, аудит" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="60" y="410" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring" value="Monitoring and Logs&lt;br&gt;метрики, ошибки интеграций, SLA 99,9%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="430" y="420" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api-docs" value="API Contracts&lt;br&gt;OpenAPI, форматы событий, коды ошибок" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" vertex="1" parent="deposit-boundary">
+          <mxGeometry x="240" y="590" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="call-system" value="Система кол-центра&lt;br&gt;React + Java Spring Boot + PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1940" y="180" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" value="SMS-шлюз&lt;br&gt;телеком-оператор" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1940" y="400" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-boundary" value="АБС, Delphi + Oracle + PL-SQL" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="1940" y="620" width="560" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-client" value="Delphi Desktop Client&lt;br&gt;рабочее место бэк-офиса" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="50" y="80" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-deposit-module" value="Deposit Back-office Module&lt;br&gt;подтверждение условий, открытие депозита" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="310" y="80" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-rate-module" value="Rate Management Module&lt;br&gt;ставки и правила вместо XLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="50" y="210" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-credit-module" value="Credit Risk Module&lt;br&gt;данные риска для специальных ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="310" y="210" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-adapter" value="ABS Integration Adapter&lt;br&gt;приём заявок, публикация статусов и ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="50" y="350" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-db" value="Oracle DB / PL-SQL&lt;br&gt;счета, депозиты, договоры, роли" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="310" y="350" width="210" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-client-site" value="HTTPS" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="client" target="site">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-client-ib" value="HTTPS" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="client" target="ib-boundary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-site-api" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="site" target="deposit-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-api" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="ib-adapter" target="deposit-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-rates" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="ib-adapter" target="rates-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-db" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="deposit-api" target="deposit-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-otp" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="deposit-api" target="otp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-otp-sms" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="otp" target="sms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-worker-db" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="worker" target="deposit-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-worker-call" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="worker" target="call-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-call-operator" value="рабочее место оператора" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="call-system" target="operator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-worker-abs" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="worker" target="abs-adapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-rates-abs" value="" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="abs-adapter" target="rates-api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1820" y="1010" />
+              <mxPoint x="1820" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-backoffice-abs" value="" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="backoffice" target="abs-client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-client-modules" value="" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="abs-client" target="abs-deposit-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-rate-credit" value="" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="abs-rate-module" target="abs-credit-module">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-modules-db" value="" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="abs-deposit-module" target="abs-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-adapter-db" value="" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="abs-adapter" target="abs-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-internal1" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#1f5bc6" edge="1" parent="ib-boundary" source="ib-ui" target="ib-monolith">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-internal2" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#1f5bc6" edge="1" parent="ib-boundary" source="ib-monolith" target="ib-adapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-db" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#1f5bc6" edge="1" parent="ib-boundary" source="ib-monolith" target="ib-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Для MVP допустим outbox в MS SQL депозитного контура. Kafka рассматривается как целевой брокер сообщений, когда появится совместимость и эксплуатационная готовность." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;align=left;spacing=10" vertex="1" parent="1">
+          <mxGeometry x="940" y="1020" width="760" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

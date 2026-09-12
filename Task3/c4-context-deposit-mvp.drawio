@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" modified="2026-09-12T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="c4-context-deposit-mvp" name="C4 Context Deposit MVP">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="C4 Context: MVP открытия депозитов онлайн" style="text;html=1;strokeColor=none;fillColor=none;fontSize=28;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="850" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Контекст показывает участников и системы, которые покрывают заявки с сайта, заявки из интернет-банка, обработку в АБС, звонок кол-центра и SMS-уведомления." style="text;html=1;strokeColor=none;fillColor=none;fontSize=15;align=left;whiteSpace=wrap" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="client-new" value="Новый клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="90" y="200" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="client-existing" value="Действующий клиент" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="call-operator" value="Оператор кол-центра" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="1510" y="210" width="90" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="backoffice" value="Бэк-офис депозитов и кредитов" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="1510" y="620" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="site" value="Сайт банка&lt;br&gt;PHP + React.js&lt;br&gt;заявки новых клиентов" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="190" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="internet-bank" value="Интернет-банк&lt;br&gt;ASP.NET MVC 4.5&lt;br&gt;заявки действующих клиентов" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="310" y="430" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="deposit-platform" value="Контур депозитных заявок MVP&lt;br&gt;API заявок, ставки, статусы, SMS, асинхронная интеграция" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="720" y="320" width="330" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="call-system" value="Система кол-центра&lt;br&gt;React + Java Spring Boot + PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="190" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="abs" value="АБС&lt;br&gt;Delphi + Oracle + PL-SQL&lt;br&gt;ставки, заявки, открытие депозитов" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="600" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sms" value="SMS-шлюз телеком-оператора" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="760" y="620" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-new-site" value="смотрит депозиты, оставляет Ф. И. О. и телефон" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="client-new" target="site">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-existing-ib" value="выбирает депозит, счёт и сумму" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="client-existing" target="internet-bank">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-site-platform" value="HTTPS: создать заявку, получить ставки" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="site" target="deposit-platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ib-platform" value="HTTPS: ставки, персональные условия, заявка, SMS-подтверждение" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="internet-bank" target="deposit-platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-platform-call" value="асинхронно передать лид с сайта" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="deposit-platform" target="call-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-call-operator" value="обработать звонок" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="call-system" target="call-operator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-platform-abs" value="асинхронно: заявка, статусы, публикация ставок" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="deposit-platform" target="abs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-backoffice-abs" value="подтверждает ставку и открывает депозит" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="backoffice" target="abs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-platform-sms" value="SMS-коды и уведомления" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="deposit-platform" target="sms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-sms-existing" value="код подтверждения, статусы" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="sms" target="client-existing">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="760" />
+              <mxPoint x="120" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-sms-new" value="уведомления по заявке" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="sms" target="client-new">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="670" y="170" />
+              <mxPoint x="120" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Ключевой принцип MVP: сайт и интернет-банк не обращаются напрямую к БД АБС. Новый контур принимает онлайн-нагрузку, хранит заявки, отдаёт быстрые ставки и асинхронно синхронизируется с АБС." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;align=left;spacing=10" vertex="1" parent="1">
+          <mxGeometry x="310" y="820" width="980" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
