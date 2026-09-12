@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-09-12T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="c4-context-rates-call-centers" name="C4 Context Rates to Call Centers">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="C4 Context: передача депозитных ставок в кол-центры" style="text;html=1;strokeColor=none;fillColor=none;fontSize=28;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="950" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Контекст нового изменения: единый источник ставок публикует данные во внутренний кол-центр через API, а партнёру — файлом через SFTP." style="text;html=1;strokeColor=none;fillColor=none;fontSize=15;align=left;whiteSpace=wrap" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="deposit-manager" value="Менеджер депозитного бэк-офиса" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="70" y="210" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="credit-manager" value="Менеджер кредитного бэк-офиса" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="70" y="470" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="internal-operator" value="Оператор кол-центра банка" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="1530" y="210" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="partner-operator" value="Оператор партнёрского кол-центра" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=15" vertex="1" parent="1">
+          <mxGeometry x="1530" y="620" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="abs" value="АБС&lt;br&gt;модуль ставок, кредитный риск, ролевой доступ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="330" width="280" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="rates" value="Сервис ставок MVP&lt;br&gt;Rates API / Rate Cache&lt;br&gt;единый источник опубликованных ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="760" y="320" width="330" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="call-system" value="Система кол-центра банка&lt;br&gt;экран ставок оператора" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1190" y="210" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sftp" value="SFTP-сервер банка&lt;br&gt;файлы ставок для партнёра" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="800" y="620" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="partner-system" value="Система партнёрского кол-центра&lt;br&gt;импорт файла ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=15;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1190" y="610" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-deposit-abs" value="ведёт базовые ставки" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="deposit-manager" target="abs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-credit-abs" value="обновляет данные риска" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="credit-manager" target="abs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-rates" value="публикация ставок и версий" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="abs" target="rates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-rates-call" value="внутренний API ставок" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="rates" target="call-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-call-operator" value="консультация по актуальным ставкам" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="call-system" target="internal-operator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-rates-sftp" value="CSV-файл по расписанию или событию" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="rates" target="sftp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-sftp-partner" value="SFTP download" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#666666" edge="1" parent="1" source="sftp" target="partner-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-partner-operator" value="консультация по последнему файлу" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="1" source="partner-system" target="partner-operator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Партнёру не передаются персональные ставки и данные клиентов. Файл содержит только публичные параметры продуктов, базовые ставки и дату актуальности." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;align=left;spacing=10" vertex="1" parent="1">
+          <mxGeometry x="330" y="820" width="940" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2026-09-12T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="c4-component-rates-call-centers" name="C4 Component Rates to Call Centers">
+    <mxGraphModel dx="2700" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2700" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="C4 Component: сервис ставок и передача в кол-центры" style="text;html=1;strokeColor=none;fillColor=none;fontSize=28;fontStyle=1;align=left" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="980" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-boundary" value="АБС" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="520" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-rate" value="Rate Management Module&lt;br&gt;ведение ставок вместо XLS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="50" y="80" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-risk" value="Credit Risk Module&lt;br&gt;показатели для специальных ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="290" y="80" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-pub" value="Rate Publication Adapter&lt;br&gt;публикация версий ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="150" y="230" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abs-db" value="Oracle DB / PL-SQL&lt;br&gt;ставки, роли, аудит" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="abs-boundary">
+          <mxGeometry x="140" y="390" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rates-boundary" value="Депозитный контур MVP: Rates API / Rate Cache" style="swimlane;html=1;rounded=0;startSize=34;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=16" vertex="1" parent="1">
+          <mxGeometry x="710" y="150" width="820" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="ingestion" value="Rate Ingestion API&lt;br&gt;приём публикации из АБС" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="rates-boundary">
+          <mxGeometry x="60" y="90" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="validation" value="Rate Validation&lt;br&gt;проверка версии и полноты данных" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="rates-boundary">
+          <mxGeometry x="370" y="90" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Internal Rates API&lt;br&gt;ставки для сайта, ИБ и кол-центра" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13;fontStyle=1" vertex="1" parent="rates-boundary">
+          <mxGeometry x="60" y="240" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="export" value="Rates Export Job&lt;br&gt;CSV-файл для партнёра" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13;fontStyle=1" vertex="1" parent="rates-boundary">
+          <mxGeometry x="370" y="240" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="publisher" value="SFTP Publisher&lt;br&gt;выгрузка, повторы, checksum" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#438dd5;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="rates-boundary">
+          <mxGeometry x="530" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rates-db" value="Rates DB / Cache&lt;br&gt;версии ставок, дата актуальности, аудит" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85bbf0;strokeColor=#0b4884;fontColor=#ffffff;fontSize=13" vertex="1" parent="rates-boundary">
+          <mxGeometry x="70" y="420" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring" value="Monitoring and Audit&lt;br&gt;алерты, история публикаций" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=13" vertex="1" parent="rates-boundary">
+          <mxGeometry x="300" y="590" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="call-system" value="Система кол-центра банка&lt;br&gt;Rates Client + экран ставок оператора" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168bd;strokeColor=#0b4884;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1760" y="230" width="340" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sftp" value="SFTP Server&lt;br&gt;каталог партнёра, ключи, журнал доступа" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1760" y="520" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" value="Система партнёрского кол-центра&lt;br&gt;File Import Job + справочник ставок" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#666666;fontColor=#ffffff;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1760" y="760" width="360" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-rate-risk" value="учёт риска" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="abs-boundary" source="abs-risk" target="abs-rate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-rate-db" value="" style="endArrow=block;html=1;rounded=0" edge="1" parent="abs-boundary" source="abs-rate" target="abs-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-pub-db" value="читает утверждённую версию" style="endArrow=block;html=1;rounded=0;fontSize=12" edge="1" parent="abs-boundary" source="abs-pub" target="abs-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-abs-ingestion" value="publish rates" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="abs-pub" target="ingestion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ingestion-validation" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#1f5bc6" edge="1" parent="rates-boundary" source="ingestion" target="validation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-validation-db" value="save version" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="rates-boundary" source="validation" target="rates-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-db" value="read latest" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="rates-boundary" source="api" target="rates-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-export-db" value="read latest public rates" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="rates-boundary" source="export" target="rates-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-export-publisher" value="file + checksum" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="rates-boundary" source="export" target="publisher">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-call" value="GET /rates" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="api" target="call-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-publisher-sftp" value="SFTP upload" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#1f5bc6" edge="1" parent="1" source="publisher" target="sftp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-sftp-partner" value="SFTP download" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#666666" edge="1" parent="1" source="sftp" target="partner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-monitoring" value="events" style="endArrow=block;html=1;rounded=0;fontSize=12;strokeColor=#666666;dashed=1" edge="1" parent="rates-boundary" source="publisher" target="monitoring">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
